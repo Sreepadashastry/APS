@@ -1,34 +1,6 @@
 #include <iostream>
 #include <bits/stdc++.h>
 using namespace std;
-/*
-void heaps(int h[],int n)
-{
-    int i,k,v,j;
-    bool heap;
-    for(i=n/2;i>0;i--)
-    {
-        k=i;
-        v=h[i];
-        heap=false;
-        while(!heap && 2*k<=n)
-        {
-            j=2*k;
-            if(j<k)
-                Swap(h,j,j+1);
-            if(v<=h[j])
-            {
-                heap=true;
-            }
-            else{
-                h[k]=h[j];
-                k=j;
-            }
-        }
-        h[k]=v;
-    }
-}
-*/
 
 void heapify(int arr[],int size,int i)
 {
