@@ -1,37 +1,34 @@
 #include <iostream>
 
 using namespace std;
-
-void Generate(int n,int sum,char* out,int ind,int x,int y)
+void dyck(char out[],int n,int ind,int sum)
 {
-    if(sum<0)
-        return;
-    if(x==n && y==n)
+    if(ind==n && sum==0)
     {
-        if(sum==0)
-        {
-            for(int i=0;i<ind;i++)
-                cout<<out[i];
-            cout<<endl;
-            return;
-        }
-        else
-            return;
+        for(int i=0;i<ind;i++)
+            cout<<out[i]<<" ";
+        cout<<endl;
+        return;
     }
-    out[ind]='X';
-    if(x+1<=n)
-        Generate(n,sum+1,out,ind+1,x+1,y);
-    out[ind]='Y';
-    if(y+1<=n)
-        Generate(n,sum-1,out,ind+1,x,y+1);
+    else if(ind==n)
+    {
+        return;
+    }
 
+    out[ind]='Y';
+    dyck(out,n,ind+1,sum+1);
+    if(sum-1>=0)
+    {
+        out[ind]='X';
+        dyck(out,n,ind+1,sum-1);
+    }
 }
 
 int main()
 {
     int n;
-    char out[10000];
+    char out[200];
     cin>>n;
-    Generate(n,0,out,0,0,0);
+    dyck(out,2*n,0,0);
     return 0;
 }
